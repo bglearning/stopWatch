@@ -1,0 +1,45 @@
+* {
+        box-sizing: border-box;
+}
+
+body {
+        background-color: #80d4ea;
+}
+
+#container {
+        width: 100%;
+        padding: 0;
+        margin: 10px;
+        font-family: courier, monospace;
+}
+
+#stopwatch {
+
+        margin: 100px auto;
+        padding: 15px;
+        text-align: center;
+        color: white;
+        font-size: 600%;
+}
+
+#btns {
+        text-align: center;
+}
+
+.btn {
+        cursor: pointer;
+        padding: 5px 25px;
+        background-color: #dd3340;
+        border: 1px solid #aabcde;
+        margin: 10px;
+
+        border-radius: 15px;
+        box-shadow: 0 0 6px #134236;
+
+        color: white;
+        font-size: 200%;
+}
+
+.btn:disabled {
+        background-color: #ff7784;
+}
