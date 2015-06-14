@@ -1,6 +1,14 @@
 var rate = 10; //Once per 10 millisecond i.e 1 centisecond is the standard unit
 var running = false; 
 var counter = 0; //Unit is centisecond
+var initial = (new Date()).getTime();
+
+window.onfocus = function() {
+        if(running){
+                var current = (new Date()).getTime();
+                counter += (current - initial - counter *10)/10;
+        }
+}
 
 var addZero = function(val){
         var str = "" + val;
@@ -13,6 +21,10 @@ var start = function(){
         document.getElementById("startStop").textContent = "Stop";
         document.getElementById("startStop").onclick = function() { stop(); };
         document.getElementById("reset").disabled = true;
+
+        if(counter == 0){
+            initial = (new Date()).getTime();
+        }
 }
 
 var stop = function(){
@@ -45,7 +57,10 @@ var updateDisplay = function(){
         seconds = addZero(seconds);
         centiseconds = addZero(centiseconds);
 
-        document.getElementById("stopwatch").textContent = hours + ":" + minutes + ":" + seconds;
+        var clockStr = hours + ":" + minutes + ":" + seconds;
+
+        document.getElementById("stopwatch").textContent = clockStr;
+        document.title = clockStr;
 }
 
 var reset = function(){
