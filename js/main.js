@@ -1,20 +1,28 @@
-var rate = 10; //Once per 10 millisecond i.e 1 centisecond is the standard unit
+/* 
+ * Globals *cringes*
+ *
+ */
+
+var rate = 10;                          //Once per 10 millisecond i.e 1 centisecond is the standard unit
 var running = false; 
-var counter = 0; //Unit is centisecond
+var counter = 0;                        //Unit is centisecond
 var initial = (new Date()).getTime();
+
+/*
+ * The window has been brought back into focus.
+ * Compare the current time with the last "initial" time and adjust the counter.
+ */
 
 window.onfocus = function() {
         if(running){
                 var current = (new Date()).getTime();
-                counter += (current - initial - counter *10)/10;
+                counter += (current - initial - counter *rate)/rate;
         }
 }
 
-var addZero = function(val){
-        var str = "" + val;
-        if(val<10){ str = "0" + val; }
-        return str;
-}
+/*
+ * Start and stop functions
+ */
 
 var start = function(){
         running = true;
@@ -32,6 +40,16 @@ var stop = function(){
         document.getElementById("startStop").textContent = "Start";
         document.getElementById("startStop").onclick = function() { start(); };
         document.getElementById("reset").disabled = false;
+}
+
+/*
+ * Add zero when required
+ */
+
+var addZero = function(val){
+        var str = "" + val;
+        if(val<10){ str = "0" + val; }
+        return str;
 }
 
 
@@ -66,7 +84,7 @@ var updateDisplay = function(){
 var reset = function(){
         running = false;
         counter = 0;
-        document.getElementById("reset").disabled = true;
+        document.getElementById("reset").disabled = true;       // Disable the reset button
         updateDisplay();
 }
 
