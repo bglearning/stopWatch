@@ -18,7 +18,14 @@ body {
         padding: 15px;
         text-align: center;
         color: white;
+}
+
+#main {
         font-size: 600%;
+}
+
+#cs {
+        font-size: 200%;
 }
 
 #btns {

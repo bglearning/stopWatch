@@ -67,7 +67,7 @@ var updateDisplay = function(){
         cnt = cnt % 6000;
         var seconds = Math.floor(cnt/100);
         cnt = cnt % 100;
-        var centiseconds = cnt;
+        var centiseconds = Math.floor(cnt);
 
 
         hours = addZero(hours);
@@ -77,7 +77,8 @@ var updateDisplay = function(){
 
         var clockStr = hours + ":" + minutes + ":" + seconds;
 
-        document.getElementById("stopwatch").textContent = clockStr;
+        document.getElementById("main").textContent = clockStr;
+        document.getElementById("cs").textContent = " " + centiseconds;
         document.title = clockStr;
 }
 
